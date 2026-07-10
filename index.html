@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Anna Kalyan · Education App</title>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1159340596284666');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1159340596284666&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      background: #0b0719;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 430px;
+      min-height: 100vh;
+      padding: 25px 18px 40px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(255, 215, 0, 0.18), transparent 40%),
+        radial-gradient(circle at bottom left, rgba(255, 80, 80, 0.15), transparent 45%),
+        linear-gradient(180deg, #0b0719, #1a0e2a, #0b0719);
+    }
+
+    .container::before,
+    .container::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.35;
+      animation: moveGlow 10s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    .container::before {
+      background: #f7c948;
+      top: -80px;
+      right: -100px;
+    }
+
+    .container::after {
+      background: #e63946;
+      bottom: -80px;
+      left: -100px;
+      animation-delay: 2s;
+    }
+
+    @keyframes moveGlow {
+      from { transform: translate(0, 0) scale(1); }
+      to { transform: translate(30px, -20px) scale(1.15); }
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    /* ---------- GLASS CARD ---------- */
+    .profile-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 28px;
+      padding: 22px 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      margin-bottom: 22px;
+    }
+
+    .avatar {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 18px;
+      padding: 4px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #f7c948, #e63946, #f7c948);
+      background-size: 200% 200%;
+      animation: shimmerBorder 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmerBorder {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 26px;
+      background: #1a0e2a;
+    }
+
+    h1 {
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+      background: linear-gradient(135deg, #f7c948, #ffb347);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tagline {
+      color: #f7c948;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      text-shadow: 0 0 12px rgba(247, 201, 72, 0.3);
+    }
+
+    .description {
+      font-size: 13px;
+      color: #c0c8e0;
+      line-height: 1.6;
+    }
+
+    /* ---------- 3 STAT CARDS ---------- */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 18px;
+      padding: 14px 8px;
+      border: 1px solid rgba(255, 215, 0, 0.15);
+      backdrop-filter: blur(4px);
+    }
+
+    .stat h3 {
+      font-size: 20px;
+      color: #f7c948;
+      margin-bottom: 4px;
+      font-weight: 800;
+    }
+
+    .stat p {
+      font-size: 11px;
+      color: #b0bcdb;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    /* ---------- MAIN CTA : DOWNLOAD APP ---------- */
+    .cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 18px 20px;
+      width: 100%;
+      margin: 20px auto;
+      border-radius: 60px;
+      text-decoration: none;
+      color: #0b0719;
+      font-weight: 900;
+      font-size: 22px;
+      background: linear-gradient(90deg, #f7c948, #ff8c42, #f7c948);
+      background-size: 300% 300%;
+      animation: gradientMove 4s ease-in-out infinite, pulse 2.4s infinite;
+      box-shadow: 0 15px 40px rgba(247, 201, 72, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: 0.2s;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+
+    .cta-btn img {
+      width: 26px;
+      height: 26px;
+      filter: brightness(0) invert(1);
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 15px 40px rgba(247, 201, 72, 0.3); }
+      50% { transform: scale(1.02); box-shadow: 0 20px 50px rgba(247, 201, 72, 0.5); }
+    }
+
+    /* ---------- 4 BENEFIT CARDS ---------- */
+    .benefits {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .benefit {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 215, 0, 0.08);
+      border-radius: 20px;
+      padding: 15px;
+      text-align: left;
+      transition: 0.25s;
+      backdrop-filter: blur(4px);
+    }
+
+    .benefit:hover {
+      transform: translateY(-3px);
+      border-color: #f7c948;
+      background: rgba(247, 201, 72, 0.05);
+    }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      background: linear-gradient(135deg, #f7c948, #e63946);
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(247, 201, 72, 0.2);
+    }
+
+    .benefit h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 3px;
+      color: #fff;
+    }
+
+    .benefit p {
+      font-size: 12px;
+      color: #b0bcdb;
+    }
+
+    /* ---------- FOOTER ---------- */
+    .footer {
+      margin-top: 18px;
+      font-size: 13px;
+      color: #b0bcdb;
+    }
+
+    .footer span {
+      color: #f7c948;
+      font-weight: 700;
+    }
+
+    .note {
+      margin-top: 8px;
+      font-size: 11px;
+      color: #6a7199;
+    }
+
+    /* ---------- FLOATING DOWNLOAD BUTTON ---------- */
+    .float-btn {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #f7c948;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px rgba(247, 201, 72, 0.6);
+      animation: bounce 2s infinite;
+      z-index: 999;
+      border: 2px solid rgba(255,255,255,0.2);
+      transition: 0.2s;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .float-btn img {
+      width: 32px;
+      height: 32px;
+      filter: brightness(0) invert(1);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .cta-btn {
+      width: 100%;
+    }
+
+    .download-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="content">
+
+    <!-- Profile Card - Anna Kalyan with anna.jpg -->
+    <div class="profile-card">
+      <div class="avatar">
+        <img src="anna.jpg" alt="Anna Kalyan">
+      </div>
+
+      <h1>ANNA KALYAN</h1>
+      <div class="tagline">📲 Matka App · Play &amp; Win 📲</div>
+      <div class="description">
+        Download the official Anna Kalyan app. Fast results, secure payouts, and daily jackpot games.
+      </div>
+    </div>
+
+    <!-- 3 Stat Cards -->
+    <div class="stats">
+      <div class="stat">
+        <h3>10K+</h3>
+        <p>Active Players</p>
+      </div>
+      <div class="stat">
+        <h3>24/7</h3>
+        <p>Live Results</p>
+      </div>
+      <div class="stat">
+        <h3>97%</h3>
+        <p>Payout Rate</p>
+      </div>
+    </div>
+
+    <!-- MAIN CTA : DOWNLOAD APP with demo link -->
+    <a href="https://annagroupmatkaplay.matkaverse.in/downloads/Anna%20Group%20Matka.apk" class="cta-btn" id="downloadBtn">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z'/%3E%3C/svg%3E"
+           alt="Download">
+      <span class="download-badge">Download App</span>
+    </a>
+
+    <!-- 4 Benefit Cards -->
+    <div class="benefits">
+      <div class="benefit">
+        <div class="icon">🎯</div>
+        <div>
+          <h4>Live Results</h4>
+          <p>Real-time updates &amp; instant win alerts.</p>
+        </div>
+      </div>
+
+      <div class="benefit">
+        <div class="icon">📈</div>
+        <div>
+          <h4>Smart Tools</h4>
+          <p>Number analysis and prediction aids.</p>
+        </div>
+      </div>
+
+      <div class="benefit">
+        <div class="icon">💰</div>
+        <div>
+          <h4>Fast Payouts</h4>
+          <p>Withdraw your winnings instantly.</p>
+        </div>
+      </div>
+
+      <div class="benefit">
+        <div class="icon">🛡️</div>
+        <div>
+          <h4>Secure &amp; Fair</h4>
+          <p>100% transparent and trusted platform.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      Powered by <span>ANNA Group</span>
+      <div class="note">18+ only · Play responsibly · For entertainment purposes</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FLOATING DOWNLOAD BUTTON with demo link -->
+<a href="https://annagroupmatkaplay.matkaverse.in/downloads/Anna%20Group%20Matka.apk" class="float-btn" id="floatDownloadBtn">
+  <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z'/%3E%3C/svg%3E"
+       alt="Download">
+</a>
+
+</body>
+</html>
